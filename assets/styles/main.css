@@ -11,8 +11,11 @@ body {
   color: #444;
 }
 
-h1, h2 {
+h1, h2, h3, h4, h5, h6 {
   text-transform: uppercase;
+}
+
+h1, h2 {
   letter-spacing: 2px;
 }
 
@@ -36,11 +39,7 @@ h3, h4 {
 }
 
 #top-nav a:hover {
-  color: #95d6d8;
-}
-
-#top-nav a:active {
-  color: #95d6d8;
+  color: #999;
 }
 
 #top-nav a:after {
@@ -61,11 +60,11 @@ h3, h4 {
 }
 
 #social-media a {
-  color: #000;
+  color: #95d6d8;
 }
 
 #social-media a:hover {
-  color: #95d6d8;
+  color: #999;
 }
 
 /* MAIN NAVIGATION BAR STYLES */
@@ -87,10 +86,6 @@ h3, h4 {
 }
 
 #main-nav a:hover {
-  color: #95d6d8;
-}
-
-#main-nav a:active {
   color: #95d6d8;
 }
 
@@ -123,6 +118,7 @@ h3, h4 {
 
 /* MEDIA QUERY STYLES */
 
+/* Phones in landscape mode, tablets, desktops */
 @media (min-width: 576px) {
   .container {
     padding: 0;
@@ -136,11 +132,33 @@ h3, h4 {
   }
 }
 
+/* Phones in portrait or landscape mode */
 @media (max-width: 767.98px) {
+  #top-nav {
+    display: none;
+  }
   #logo, #social-media {
     text-align: center;
   }
   #social-media {
-    margin-top: 25px;
+    margin: 30px 15px 0 15px;
+    background-color: #95d6d8;
+  }
+  #social-media a {
+    color: #fff;
+  }
+  #social-media a:hover {
+    color: #000;
+  }
+  #branding {
+    margin-bottom: 0;
+  }
+}
+
+/* Phones in portrait mode */
+@media (max-width: 575.98px) {
+  #social-media {
+    margin-left: 0;
+    margin-right: 0;
   }
 }
