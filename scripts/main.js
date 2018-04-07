@@ -2,7 +2,11 @@
 const titleText = "Website Name";
 
 // TOP NAVIGATION BAR
-const topNavLinks = [['Link1','https://#'],['Link2','https://#'],['Link3','https://#']];
+const topNavLinks = [
+  ['Link1', 'https://#'],
+  ['Link2', 'https://#'],
+  ['Link3', 'https://#']
+];
 
 // LOGO
 const logoImg = 'logo.png';
@@ -22,7 +26,11 @@ const github = {
 };
 
 // MAIN NAVIGATION BAR
-const mainNavLinks = [['Link1','https://#'],['Link2','https://#'],['Link3','https://#']];
+const mainNavLinks = [
+  ['Link1', 'https://#'],
+  ['Link2', 'https://#'],
+  ['Link3', 'https://#']
+];
 
 // FOOTER
 const copyright = {
