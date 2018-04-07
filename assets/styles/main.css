@@ -11,6 +11,15 @@ body {
   color: #444;
 }
 
+h1, h2 {
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+h3, h4 {
+  letter-spacing: 1px;
+}
+
 /* TOP NAVIGATION BAR STYLES */
 
 #top-nav {
@@ -27,12 +36,11 @@ body {
 }
 
 #top-nav a:hover {
-  color: #999;
+  color: #95d6d8;
 }
 
 #top-nav a:active {
-  background-color: #000;
-  color: #fff;
+  color: #95d6d8;
 }
 
 #top-nav a:after {
@@ -57,7 +65,7 @@ body {
 }
 
 #social-media a:hover {
-  color: #444;
+  color: #95d6d8;
 }
 
 /* MAIN NAVIGATION BAR STYLES */
@@ -66,7 +74,7 @@ body {
   background-color: #000;
   padding-top: 5px;
   padding-bottom: 5px;
-  border-bottom: #999 4px solid;
+  border-bottom: #95d6d8 4px solid;
 }
 
 #main-nav a {
@@ -79,12 +87,11 @@ body {
 }
 
 #main-nav a:hover {
-  color: #999;
+  color: #95d6d8;
 }
 
 #main-nav a:active {
-  background-color: #000;
-  color: #fff;
+  color: #95d6d8;
 }
 
 #main-nav a:after {

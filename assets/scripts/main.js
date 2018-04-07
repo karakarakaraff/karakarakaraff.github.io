@@ -1,35 +1,34 @@
 // TITLE
-const titleText = "Website Name";
+const titleText = "Kara Flaherty | Web Developer & Visual Designer";
 
 // TOP NAVIGATION BAR
 const topNavLinks = [
-  ['Link1', 'https://#'],
-  ['Link2', 'https://#'],
-  ['Link3', 'https://#']
+  ['Download resume', 'https://#']
 ];
 
 // LOGO
-const logoImg = 'logo.png';
+const logoImg = 'assets/logo-kf.png';
 
 // SOCIAL MEDIA
 const linkedin = {
-  link: 'https://www.linkedin.com/in/-----',
+  link: 'https://www.linkedin.com/in/kara-flaherty',
   icon: 'fab fa-linkedin'
 };
 const twitter = {
-  link: 'https://twitter.com/-----',
+  link: 'https://twitter.com/karakarakaraff',
   icon: 'fab fa-twitter'
 };
 const github = {
-  link: 'https://github.com/-----',
+  link: 'https://github.com/karakarakaraff',
   icon: 'fab fa-github'
 };
 
 // MAIN NAVIGATION BAR
 const mainNavLinks = [
-  ['Link1', 'https://#'],
-  ['Link2', 'https://#'],
-  ['Link3', 'https://#']
+  ['Home', 'index.html'],
+  ['Portfolio', 'portfolio.html'],
+  ['Blog', 'blog.html'],
+  ['Korea', 'korea.html']
 ];
 
 // FOOTER
