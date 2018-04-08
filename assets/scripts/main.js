@@ -39,7 +39,13 @@ const copyright = {
 
 // FUNCTION TO LOAD AND ASSEMBLE EVERYTHING
 window.onload = function() {
-  document.title = titleText;
+
+  if (document.getElementById('page-title') !== null) {
+    const pageTitle = document.getElementById('page-title').innerHTML;
+    document.title = `${pageTitle} | ${titleText}`;
+  } else {
+    document.title = `${titleText}`;
+  }
 
   const topNav = document.getElementById('top-nav');
   topNav.innerHTML = '';
