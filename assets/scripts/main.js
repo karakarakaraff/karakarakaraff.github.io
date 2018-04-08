@@ -33,7 +33,7 @@ const mainNavLinks = [
 
 // FOOTER
 const copyright = {
-  name: 'Name',
+  name: 'Kara Flaherty',
   year: new Date().getFullYear()
 };
 
