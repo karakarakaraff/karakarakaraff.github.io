@@ -19,9 +19,6 @@
 
 .page-intro h6 a {
   color: #999;
-}
-
-.page-intro h6 a:hover {
   text-decoration: none;
 }
 
@@ -34,6 +31,7 @@
   background-color: #fff;
   color: #999;
   border: none;
+  padding-top: 0px;
   padding-bottom: 0px;
   font-size: 12px;
   font-weight: 300;
@@ -43,11 +41,11 @@
 
 .card-title a {
   color: #000;
+  text-decoration: none;
 }
 
 .card-title a:hover {
   color: #95d6d8;
-  text-decoration: none;
 }
 
 .card-body {
@@ -66,7 +64,39 @@
 
 img.image-in-text {
   padding-left: 20px;
-  padding-bottom: 20px;
+}
+
+.nav-tabs {
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  border-top: 3px solid #000;
+  border-bottom: 1px solid #999;
+  margin-top: 25px;
+  margin-bottom: 15px;
+}
+
+.nav-tabs .nav-link {
+  padding: 16px;
+  color: #999;
+  border: 0;
+}
+
+.nav-tabs .nav-link:hover {
+  color: #95d6d8;
+  border: 0;
+}
+
+.nav-tabs .nav-link.active {
+  border-radius: 0;
+  border-top: 0;
+  border-left: 0;
+  border-right: 0;
+  border-bottom: 3px solid #000;
+}
+
+.figure-caption {
+  font-style: italic;
 }
 
 @media (max-width: 1199.98px) {
