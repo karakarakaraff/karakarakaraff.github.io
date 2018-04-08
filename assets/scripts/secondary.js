@@ -7,7 +7,7 @@ const topNavLinks = [
 ];
 
 // LOGO
-const logoImg = 'assets/images/logo-kf.png';
+const logoImg = '../assets/images/logo-kf.png';
 
 // SOCIAL MEDIA
 const linkedin = {
@@ -25,10 +25,10 @@ const github = {
 
 // MAIN NAVIGATION BAR
 const mainNavLinks = [
-  ['Home', 'index.html'],
-  ['Portfolio', 'portfolio.html'],
-  ['Blog', 'blog.html'],
-  ['Korea', 'korea.html']
+  ['Home', '../index.html'],
+  ['Portfolio', '../portfolio.html'],
+  ['Blog', '../blog.html'],
+  ['Korea', '../korea.html']
 ];
 
 // FOOTER
@@ -48,7 +48,7 @@ window.onload = function() {
   }
 
   const logo = document.getElementById('logo');
-  logo.innerHTML = `<a href="index.html"><img class="img-fluid" src="${logoImg}" alt="${copyright.name}"/></a>`;
+  logo.innerHTML = `<a href="../index.html"><img class="img-fluid" src="${logoImg}" alt="${copyright.name}"/></a>`;
 
   const socialMedia = document.getElementById('social-media');
   socialMedia.innerHTML = `<a href="${linkedin.link}"><i class="${linkedin.icon} fa-3x" data-fa-transform="shrink-6"></i></a><a href="${twitter.link}"><i class="${twitter.icon} fa-3x" data-fa-transform="shrink-6"></i></a><a href="${github.link}"><i class="${github.icon} fa-3x" data-fa-transform="shrink-6"></i></a>`;

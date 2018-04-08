@@ -41,6 +41,15 @@
   text-transform: uppercase;
 }
 
+.card-title a {
+  color: #000;
+}
+
+.card-title a:hover {
+  color: #95d6d8;
+  text-decoration: none;
+}
+
 .card-body {
   padding-top: 10px;
 }
