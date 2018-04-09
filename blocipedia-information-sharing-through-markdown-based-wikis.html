@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>
+    <!-- title goes here via main.js -->
+  </title>
+  <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400">
+  <link rel="stylesheet" type="text/css" href="assets/styles/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="assets/styles/main.css">
+  <link rel="stylesheet" type="text/css" href="assets/styles/page.css">
+  <script defer src="assets/scripts/fontawesome-all.min.js"></script>
+</head>
+
+<body>
+  <header>
+    <div class="black-strip container-fluid">
+      <nav id="top-nav" class="nav container">
+        <!-- top navigation links goes here via main.js -->
+      </nav>
+    </div>
+    <section id="branding" class="container">
+      <div class="row align-items-center">
+        <div id="logo" class="col">
+          <!-- logo goes here via main.js -->
+        </div>
+        <div id="social-media" class="col-md-auto">
+          <!-- social media links go here via main.js -->
+        </div>
+      </div>
+    </section>
+    <nav id="main-nav" class="nav justify-content-center container">
+      <!-- main navigation links goes here via main.js -->
+    </nav>
+  </header>
+  <section id="page-content" class="container">
+    <div class="page-intro">
+      <h6><a href="portfolio.html#development">Portfolio: Development</a></h6>
+      <h1 id="page-title">Blocipedia: Information sharing through markdown-based wikis</h1>
+    </div>
+    <center><img src="assets/images/portfolio/blocipedia.png" class="img-fluid" /></center>
+    <figure class="figure float-right w-25 image-in-text">
+      <img src="assets/images/portfolio/github-activity-8-2017.png" class="figure-img img-fluid" />
+      <figcaption class="figure-caption">Here are my GitHub contributions for when I worked on this project — a total of 43 commits in just one week!</figcaption>
+    </figure>
+    <p>You know coding is for you when you can easily spend hours upon hours "in the zone" while forgetting to eat, forgetting to sleep, and generally forgetting that life exists outside of your code. When it came to this project, that was me. In fact, this project was scheduled to take 40 hours, which I was able to finish in 33.5 hours (yes, I time myself on everything — it's a leftover habit from freelancing), and <em>I fit all 33.5 of those hours in one week.</em> That's on top of my full-time job. Yes, I'll admit it, <strong>I was obsessed.</strong></p>
+    <p>Much like the <a href="bloc-chat-real-time-chat-app-using-angular-and-firebase.html">Bloc Chat</a> project in the front-end portion of the curriculum, Blocipedia was the back-end portion's sink-or-swim project. Instead of walking you through the steps, explaining the purpose of chunks of code, or giving you an assignment with an explicit outcome based on a previous lesson, the project's instructions are essentially, "Here are some user stories. Here are some wireframes. Kbyeeeee!" Personally, I enjoy the freedom to build as I please using everything I've learned so far, and since Ruby on Rails is honestly such a pleasure to use, I believe the combination of creativity, experimentation and pure joy is what led to my one-week downfall in personal hygiene and nutrition.</p>
+    <p>Without further ado, let's dive in!</p>
+    <h3>Project requirements</h3>
+    <p>I was given a series of user stories and wireframes for this project. They are:</p>
+    <h5>User Stories</h5>
+    <ul>
+      <li>As a user, I want to <strong>sign up</strong> for a free account by providing a user name, password and email</li>
+      <li>As a user, I want to <strong>sign in and out</strong> of Blocipedia</li>
+      <li>As a user with a standard account, I want to <strong>create, read, update and delete</strong> public wikis</li>
+      <li>As a developer, I want to offer three <strong>user roles</strong>: admin, standard, or premium</li>
+      <li>As a developer, I want to <strong>seed</strong> the development database automatically with users and wikis</li>
+      <li>As a user, I want to <strong>upgrade</strong> my account from a free to a paid plan</li>
+      <li>As a premium user, I want to <strong>create</strong> private wikis</li>
+      <li>As a user, I want to <strong>edit</strong> wikis using Markdown syntax</li>
+      <li>As a premium user, I want to <strong>add</strong> and <strong>remove</strong> collaborators for my private wikis</li>
+    </ul>
+    <h5>Wireframes</h5>
+    <div class="row">
+      <div class="col-12 col-md-6">
+        <center><img class="img-fluid" src="assets/images/portfolio/blocipedia_signup.png" /></center>
+        <p class="text-center mb-5">sign up page</p>
+      </div>
+      <div class="col-12 col-md-6">
+        <center><img class="img-fluid" src="assets/images/portfolio/blocipedia_index.png" /></center>
+        <p class="text-center mb-5">signed-in user's wiki index</p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12 col-md-6">
+        <center><img class="img-fluid" src="assets/images/portfolio/blocipedia_show.png" /></center>
+        <p class="text-center mb-5">view an individual wiki</p>
+      </div>
+      <div class="col-12 col-md-6">
+        <center><img class="img-fluid" src="assets/images/portfolio/blocipedia_collaborators.png" /></center>
+        <p class="text-center mb-5">add/remove collaborators</p>
+      </div>
+    </div>
+    <p>Again, the wireframes were not set in stone. I did stick to them for the most part, but you'll see that I made some pretty significant changes in a few key areas for what I felt was a much more streamlined design and experience. For example, instead of having collaborators on their own page and putting them in a long list with checkmarks next to their names, I included collaborators on each wiki's edit page with the ability to simply click to add, click to remove, like a button that visually moves to indicate its status. It looks like this:</p>
+    <img class="img-fluid" src="assets/images/portfolio/blocipedia-add-remove-collaborators.gif" />
+    <p>By the way, don't you just love the content you can seed to the database with the <a href="https://github.com/stympy/faker">Faker gem</a>? I used the hipster library, it cracks me up every time.</p>
+    <h3>Ruby gems</h3>
+    <p>This project uses several gems that made development mostly a breeze. They are:</p>
+    <ul>
+      <li><a href="https://github.com/plataformatec/devise" target="_blank" rel="noopener noreferrer">Devise:</a> For user authentication, signing up, signing in, signing out, email confirmation, the whole shebang.</li>
+      <li><a href="https://github.com/stympy/faker" target="_blank" rel="noopener noreferrer">Faker:</a> To seed the database with test data (as mentioned above).</li>
+      <li><a href="https://github.com/stripe/stripe-ruby" target="_blank" rel="noopener noreferrer">Stripe:</a> For a secure payment system that allows users to upgrade their accounts at a set price.</li>
+      <li><a href="https://github.com/vmg/redcarpet" target="_blank" rel="noopener noreferrer">Redcarpet:</a> For markdown parsing, which allows users to format their wikis with headers, font styles, links and more.</li>
+      <li><a href="https://github.com/elabs/pundit" target="_blank" rel="noopener noreferrer">Pundit:</a> To write a policy scope to determine what users can access based on their standard/premium/admin status.</li>
+    </ul>
+    <h3>Challenges faced, lessons learned</h3>
+    <p>This project is what made me feel confident in my grasp of Ruby on Rails. Believe it or not, I didn't face any major challenges or get stumped for too long, and I believe that's because I came into the project with a master plan of how I wanted it to look and work, and then I allowed adjustments to that plan as I went through each user story.</p>
+    <p>The most difficult part of this project was setting up collaborators because it was my first time thinking about my database in a <strong>has many through</strong> context. Until this point, I had been using the <strong>belongs to, has many</strong> relationship for my database — a wiki belongs to a user, and a user has many wikis. Easy enough, right? But collaborators are users that already exist, and each wiki can have several collaborators. Because of this, I had to think less about collaborators (the users themselves on the wiki) and think more about collaborations (the actual connection between users and wikis).</p>
+    <p>So, <a href="http://guides.rubyonrails.org/association_basics.html#the-has-many-through-association" target="_blank" rel="noopener noreferrer">following the Rails guide on active record associations</a>, I created another table in my database called "collaborators" that holds nothing more than the foreign keys to users and wikis. No new object is created, but the relationships between objects (users and wikis specifically) are stored here. So, if a user gets added to a wiki as a collaborator, this table will create a row that holds the ID of the user and the ID of the wiki.</p>
+    <p>To make this work succesfully, the models for users, wikis and collaborators had to be set up with the aforementioned <strong>has many through</strong> associations. They look like this:</p>
+    <pre><code>
+class Collaborator &lt; ApplicationRecord
+  belongs_to :user
+  belongs_to :wiki
+end
+</code></pre>
+    <pre><code>
+class User &lt; ApplicationRecord
+  has_many :collaborators
+  has_many :wikis
+  has_many :collaborations, through: :collaborators, source: :wiki
+end
+</code></pre>
+    <pre><code>
+class Wiki &lt; ApplicationRecord
+  has_many :collaborators
+  has_many :users, through: :collaborators
+  belongs_to :user
+end
+</code></pre>
+    <p>Pretty cool how it works, right? Once I got it all set up and working, I was again amazed and humbled by the database. Learning how to work with databases and getting to know the ins and outs of their architecture has really brought programming full circle for me, which is what makes back-end programming so fascinating to me. Seeing the frontend and backend work together seamlessly is both satisfying in that small way of, "Hurray, I did it!" and in the big way of realizing what runs the technology around us and what the human brain is capable of inventing.</p>
+    <hr />
+    <p><strong>Blocipedia:</strong> <a href="https://github.com/karakarakaraff/blocipedia" target="_blank" rel="noopener noreferrer">GitHub</a> / <a href="https://blocipedia-karakarakaraff.herokuapp.com/" target="_blank" rel="noopener noreferrer">Live site</a></p>
+    <p><strong>Date:</strong> August 2017</p>
+    <p><strong>Project Checklist:</strong> Ruby, Rails, Bootstrap, HTML5, CSS3, Devise gem, Stripe gem</p>
+    <p><small>Built for <a href="https://www.bloc.io">Bloc.io</a></small></p>
+  </section>
+  <div class="black-strip container-fluid">
+    <section id="footer" class="container">
+      <!-- footer goes here via main.js -->
+    </section>
+  </div>
+  <script src="assets/scripts/jquery-3.3.1.min.js"></script>
+  <script src="assets/scripts/popper.min.js"></script>
+  <script src="assets/scripts/bootstrap.min.js"></script>
+  <script src="assets/scripts/main.js"></script>
+</body>
+
+</html>

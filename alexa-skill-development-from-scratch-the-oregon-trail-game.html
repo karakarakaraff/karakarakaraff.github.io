@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>
+    <!-- title goes here via main.js -->
+  </title>
+  <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400">
+  <link rel="stylesheet" type="text/css" href="assets/styles/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="assets/styles/main.css">
+  <link rel="stylesheet" type="text/css" href="assets/styles/page.css">
+  <script defer src="assets/scripts/fontawesome-all.min.js"></script>
+</head>
+
+<body>
+  <header>
+    <div class="black-strip container-fluid">
+      <nav id="top-nav" class="nav container">
+        <!-- top navigation links goes here via main.js -->
+      </nav>
+    </div>
+    <section id="branding" class="container">
+      <div class="row align-items-center">
+        <div id="logo" class="col">
+          <!-- logo goes here via main.js -->
+        </div>
+        <div id="social-media" class="col-md-auto">
+          <!-- social media links go here via main.js -->
+        </div>
+      </div>
+    </section>
+    <nav id="main-nav" class="nav justify-content-center container">
+      <!-- main navigation links goes here via main.js -->
+    </nav>
+  </header>
+  <section id="page-content" class="container">
+    <div class="page-intro">
+      <h6><a href="portfolio.html#development">Portfolio: Development</a></h6>
+      <h1 id="page-title">Alexa skill development from scratch: the Oregon Trail game</h1>
+    </div>
+    <center><img src="assets/images/portfolio/alexa-oregon-trail.jpg" class="img-fluid" /></center>
+    <p>I previously wrote about <a href="alexa-skill-development-using-amazons-fact-trivia-samples.html">creating Alexa skills using the fact and trivia samples</a> to create Kurt Vonnegut Quotes and Stranger Things Trivia. The fact sample was pretty simple, but I had run into some issues with the trivia sample, which really forced me to dig a bit deeper into the code and understand how a voice interface is designed. In the process, I learned so much more about how Alexa works and how to build responses, I felt like I had a fairly good grasp of the process. That's when I decided to take a dive off the deep end and <strong>code an Alexa skill from scratch</strong>.</p>
+    <p>I had gotten the idea of creating a voice version of the Oregon Trail game — a staple from my childhood, especially since I grew up one block from the Oregon Trail's route in western Nebraska — after seeing <a href="https://www.thrillist.com/news/nation/oregon-trail-tourism-game" rel="noopener" target="_blank">this article</a> about the Oregon Tourism Commission creating a spin-off of the classic game called Travel Oregon. I was so amused by this idea that I then thought, wait, why don't I create my own spin-off? A quick search on the Alexa skills store showed no one had developed it yet, so I decided to run with my idea. Oregon Trail, here I come! (<em>Side note: I eventually found out that someone else actually did have the idea — <a href="https://www.uncorkedstudios.com/blog/alexas-oregon-trail-whats-old-becomes-new-again/" rel="noopener" target="_blank">Uncorked Studios in Portland</a> — but they didn't see it through to production. Lucky me!</em>)</p>
+    <h3>First things first: figuring out the game's logic</h3>
+    <p>I didn't want to juggle writing game logic <em>and</em> Alexa skill logic at the same time, so I focused my first effort on creating the game in simple, vanilla JavaScript. It took me about two weeks to build the game on repl.it (which you can play here, though be forewarned it is still imperfect: <a href="https://repl.it/@karakarakaraff/theOregonTrail" rel="noopener" target="_blank">repl.it/@karakarakaraff/theOregonTrail</a>), then I spent another week asking all of my coworkers and friends to play the game so I could get a decent amount of user feedback and weed out as many bugs as we could find.</p>
+    <p>After I felt the game was ready to go, I figured I'd just change the alerts and prompts to Alexa's voice, build the response, and voila! Done! To put it kindly, I was incredibly naive for thinking it would be that simple. <strong>It is never that simple.</strong></p>
+    <h3>Separating states according to intents</h3>
+    <p>After realizing the error of my assumptions about the process of transforming the browser version into the voice version, I knew I was in for a long haul. But that's ok — this was to be my capstone project for Bloc, and I had three months to spend on it.</p>
+    <p>Looking at the Alexa trivia sample, I saw there was an intro state and a playing state. The intro state is what introduced the player to the game, and the playing state was the actual gameplay itself. I figured I could follow a set up similar to this, so I designed my skill to have an intro state where the user sets their name, the names of the people in their party, their profession, their supplies and the month they want to start their journey on the Oregon Trail, and then a secondary playing state would handle the actual Oregon Trail part of the game.</p>
+    <p>I actually fully coded the user setup state and got it to work successfully as long as I answered Alexa in an expected way. For example:</p>
+    <p><strong>Alexa:</strong> What is your name?
+      <br /><strong>User:</strong> Kara.
+      <br /><strong>Alexa:</strong> Hello, Kara. You can be a banker, a carpenter, or a farmer. What do you want to be?
+      <br /><strong>User:</strong> I want to be a banker.
+      <br /><strong>Alexa:</strong> When do you want to start your journey?
+      <br /><strong>User:</strong> April.</p>
+    <p>Easy enough, right? But as I tested this with all of my friends' names, I found a flaw when it came to my friend, April.</p>
+    <p><strong>Alexa:</strong> What is your name?
+      <br /><strong>User:</strong> April.
+      <br /><strong>Alexa:</strong> Ok, you will start your journey in April. / There was a problem with the requested skill's response.</p>
+    <p>And what if the user jumps the gun?</p>
+    <p><strong>Alexa:</strong> What is your name?
+      <br /><strong>User:</strong> I want to be a banker!
+      <br /><strong>Alexa:</strong> Great! You're a banker. / There was a problem with the requested skill's response.</p>
+    <p>And therein lies the problem: You can never count on the user to respond in an expected way, and you have to program Alexa to handle everything a user could possibly say. <strong>This is why intents and state management are so important!</strong> In both of the above cases, depending on the state and which intents were included in that state, Alexa either did not or could not resolve unexpected user input to match what she was expecting: a name.</p>
+    <p>I fixed this in two ways: First, I broke up the user setup state into a bunch of different states: one for GetName, one for GetProfession, one for GetSupplies, one for GetStartingMonth, etc. By creating dedicated states for each piece of information I needed to gather, I could force the user to answer Alexa's questions or, alternatively, force Alexa to resolve the user's answers as the intent I wanted.</p>
+    <p>Now, if Alexa asks for a name and the user says, "I want to be a banker," she'll recognize this as belonging to the profession intent (which is not the intent she wants) and she'll prompt the user for their name again. The same thing could be said for if the user says their name is April — again, Alexa will see this as a month intent and ask the user for their name again. That brings me to the second step in the solution: creating an exception specifically for people whose names are also months.</p>
+    <pre><code>
+if (this.event.request.intent.name !== "GetName") {
+  if (this.event.request.intent.name === "GetStartingMonth") {
+    var username = this.event.request.intent.slots.month.value;
+  }
+} else {
+  this.response.speak("I'm sorry, but that's not a name I understand. Please choose another name.").listen("Please choose another name.");
+  this.emit(":responseReady");
+}
+</code></pre>
+    <p>As you can see, this piece of code tells Alexa that if she doesn't understand the name, she should first check to see if it's a month. If it is, she'll save the value of that month as the user's name. If it's not a name or a month, she'll then prompt the user again to say their name.</p>
+    <h3>No value in intent</h3>
+    <p>Here's another possibility you could run into: What if the user starts to answer but never actually does? Imagine a scenario like this:</p>
+    <p><strong>Alexa:</strong> You can be a banker, a carpenter, or a farmer. What do you want to be?
+      <br /><strong>User:</strong> I want to be a ... *thinks about it* ... *still thinking*
+      <br /><strong>Alexa:</strong> /end</p>
+    <p>To be honest, this scenario didn't even occur to me when I first submitted my skill for certification. I had thought of all the things a user <em>could</em> say, but I didn't think about what they <em>might not</em> say. And because I hadn't written anything into my code to handle this, Alexa would end the session and the game would simply stop.</p>
+    <p>Since this is something the certification team brought to my attention, I figured a quick Google search would find other people who ran into the same issue, and I was right. The most helpful bit of information I found was, as usual, on Stack Overflow: <a href="https://stackoverflow.com/questions/42721603/alexa-custom-slot-type-no-value-in-intent" rel="noopener" target="_blank">Alexa Custom Slot Type: No value in intent</a>. Here's the solution:</p>
+    <pre><code>
+if (this.event.request.intent && this.event.request.intent.slots && this.event.request.intent.slots.profession && this.event.request.intent.slots.profession.value) {
+  var profession = this.event.request.intent.slots.profession.value;
+} else {
+  this.response.speak("I'm sorry, but that's not a profession I understand. Please choose to be a banker, a carpenter, or a farmer.").listen("Please choose to be a banker, a carpenter, or a farmer.");
+  this.emit(":responseReady");
+}
+</code></pre>
+    <p>That massive "if" statement is the key. The code will check to see if the user started a specific intent and, if so, make sure the user provided a value for that intent. Now, when you say, "I want to be a ... ," Alexa will take those words and match them with the interaction model (which has "I want to be a {profession}" built into it), understand that you're trying to answer her question about a profession, but see that you did not provide a value. This gives her the opportunity to prompt the user again rather than completely ending the session.</p>
+    <h3>Global variables vs session attributes</h3>
+    <p>As much as I tested this skill before pushing it to production, I didn't realize there was one major drawback: in testing, only I am testing it, and because I'm one person, I'm testing the Lambda function with one game at a time. However, when a skill goes live, there's the possibility that multiple people will be using the skill at the same time, meaning they'll all be sharing the same Lambda function. <strong>This was my first time writing a Lambda function without a template, and I did not have enough experience to consider this.</strong> Therefore, I made a huge mistake: I wrote all of my game variables as global variables.</p>
+    <center><img src="assets/images/portfolio/huge-mistake.gif" class="img-fluid" /></center>
+    <p>I realized something was wrong when several of my friends who tried the skill reported back about weird things happening. One person was allowed to buy things at the fort with negative money. Another person was told, "Andy died of dehydration," even though there was no Andy in their party. One person was near the beginning of the trail, then suddenly at the end of the trail. I had specifically thought out and written code so that none of this would happen, so why was it happening?!</p>
+    <p>That's when I discovered <strong>session attributes</strong>. And, oh man, session attributes are <em>so very important.</em> Before running into this problem, I thought session attributes were only necessary for persisting user data between sessions (for example, the user could quit half way through the game, then come back later and pick up where they left off). NOPE. As it turns out, session attributes are necessary if there's any user data at all that you don't want to share with other users.</p>
+    <p>By using global variables, Person 1 could be halfway through the game when Person 2 also starts playing the game. When Person 2 enters, they're asked for their name, which is saved to the mainPlayer variable. However, now that name is going to be used for both Person 2 <em>and</em> Person 1. When Person 3 shows up and overwrites the variable with their name, it will apply to all three games. And to think, that's just one variable of nearly 50 that I have written into the game! You can see how it can get really messy really fast.</p>
+    <p>As with all programming, a massive mistake equals a lesson learned quick. Thankfully, all I had to do was replace all of my global variables with session attributes. So, instead of this: <code>var mainPlayer = "Kara"</code>, I used this: <code>this.event.session.attributes.mainPlayer = "Kara"</code></p>
+    <p>I could confirm it was working by checking the JSON data in the testing console:</p>
+    <pre><code>
+{
+  "session": {
+    "sessionId": "amzn1.echo-api.session.[unique-value-here]",
+    "attributes": {
+      "STATE": "_USERSETUPMODE",
+      "mainPlayer": "Kara"
+    }
+  }
+}
+</code></pre>
+    <p>Yes, I learned this lesson the hard way, and it even cost me a 1-star review on my skill, but I can tell you this much — I will never make that same mistake again!</p>
+    <h3>Planning for one-to-one interactions</h3>
+    <p>The most difficult part of building this particular Alexa skill was keeping in mind the one-to-one interaction that Amazon requires — meaning you can only offer one response to each request — as well as the many restrictions Amazon places on responses. In the original Oregon Trail game, you are constantly updated as to the miles you've traveled, the amount of supplies, etc. When designing for voice, however, these updates had to be bundled with one response, and <strong>only one</strong>. Also included in that bundle are traveling sound effects (the length of which are determined by how many days go by without any incidents on the trail), alert sounds effects, and Alexa's message, which must conclude with listening for the user to respond. With all sound effects together, there can't be more than five, and they can't last longer than 90 seconds combined.</p>
+    <p>This kind of one-to-one interaction requires you to build Alexa's response all at once, which means you must always think a step ahead. For example, it's possible for the user to travel along the Oregon Trail for six days without anything happening, then on the seventh day, they find berries. As my code is built, this means the following must happen:</p>
+    <ol>
+      <li>The travel function must run six times and track the days without incident each time, increasing the counter each time until it reaches the number six.</li>
+      <li>The travel function runs a seventh time and determines the user found berries, so the counter stops.</li>
+      <li>The berries function determines how many berries the user found and adds this amount to the food amount.</li>
+      <li>The six days without incident are pushed to the travel sound effects, which requires two effects: a long effect to represent five days and a short effect to represent one day. These are pushed to the response.</li>
+      <li>The fact that berries were found pushes a good news alert sound effect to the response.</li>
+      <li>The response adds the sound effects to Alexa's speech method.</li>
+      <li>The response builds Alexa's actual speech, which will tell the user how many berries they found.</li>
+      <li>The response will also build a listening method, which asks for and waits for the user to indicate they'd like to continue the game.</li>
+      <li>All of the pieces of the response are assembled and pushed to the user.</li>
+    </ol>
+    <p>All of this happens in a fraction of a second! So the user will say, "OK," to continue the game, and the entire process will run again. It will appear to the user that the travel sound effects begin immediately and that the skill is doing something each day, but really, their fate has already been predetermined the moment they hear anything from the speaker.</p>
+    <p>Writing code for this kind of interaction requires you to plan out exactly how Alexa's responses will be built, and because the context of each response can be so different, you have to be especially creative and organized not only in how <em>you</em> handle each response, but also in how the <em>state handlers</em> handle responses as the skill prepares for the user's next response.</p>
+    <p>Overall, building for voice forced me to totally rethink how I approach user interactions. I won't lie, my code feels a little clunky in the ways I had to alter it to make it fit within Amazon's requirements and limitations, but I reduced the code smell a fair bit, fixed the bugs, and most importantly, <strong>I made it work.</strong></p>
+    <img src="assets/images/portfolio/alexa-skill-store-oregon-trail.jpg" class="img-fluid" />
+    <p>&#9658; <strong>See Oregon Trail live on the Amazon marketplace: <a href="https://www.amazon.com/dp/B0794D1N99" rel="noopener" target="_blank">Alexa Skills: Oregon Trail</a></strong>
+      <br />&#9658; See the code behind Oregon Trail: <a href="https://github.com/karakarakaraff/alexa-skills/tree/master/oregon-trail" rel="noopener" target="_blank">Github</a></p>
+    <hr />
+    <p><strong>Alexa Skills:</strong> <a href="https://github.com/karakarakaraff/alexa-skills" target="_blank" rel="noopener noreferrer">GitHub</a></p>
+    <p><strong>Date:</strong> November 2017 - January 2018</p>
+    <p><strong>Project Checklist:</strong> JavaScript, Node.js, SSML, JSON, AWS Lambda, Alexa Skills Kit</p>
+    <p><small>Built for <a href="https://www.bloc.io">Bloc.io</a></small></p>
+  </section>
+  <div class="black-strip container-fluid">
+    <section id="footer" class="container">
+      <!-- footer goes here via main.js -->
+    </section>
+  </div>
+  <script src="assets/scripts/jquery-3.3.1.min.js"></script>
+  <script src="assets/scripts/popper.min.js"></script>
+  <script src="assets/scripts/bootstrap.min.js"></script>
+  <script src="assets/scripts/main.js"></script>
+</body>
+
+</html>

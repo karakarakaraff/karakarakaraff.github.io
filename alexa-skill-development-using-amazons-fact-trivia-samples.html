@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>
+    <!-- title goes here via main.js -->
+  </title>
+  <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400">
+  <link rel="stylesheet" type="text/css" href="assets/styles/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="assets/styles/main.css">
+  <link rel="stylesheet" type="text/css" href="assets/styles/page.css">
+  <script defer src="assets/scripts/fontawesome-all.min.js"></script>
+</head>
+
+<body>
+  <header>
+    <div class="black-strip container-fluid">
+      <nav id="top-nav" class="nav container">
+        <!-- top navigation links goes here via main.js -->
+      </nav>
+    </div>
+    <section id="branding" class="container">
+      <div class="row align-items-center">
+        <div id="logo" class="col">
+          <!-- logo goes here via main.js -->
+        </div>
+        <div id="social-media" class="col-md-auto">
+          <!-- social media links go here via main.js -->
+        </div>
+      </div>
+    </section>
+    <nav id="main-nav" class="nav justify-content-center container">
+      <!-- main navigation links goes here via main.js -->
+    </nav>
+  </header>
+  <section id="page-content" class="container">
+    <div class="page-intro">
+      <h6><a href="portfolio.html#development">Portfolio: Development</a></h6>
+      <h1 id="page-title">Alexa skill development using Amazon's fact and trivia samples</h1>
+    </div>
+    <center><img src="assets/images/portfolio/alexa.jpg" class="img-fluid" /></center>
+    <p>I started this year with the goal to learn professional web development, and back in January, my curriculum looked sooooooooo long. But here I am, 11 months later, and I'm working on my capstone! Bloc allows you to do pretty much anything you want for your capstone, and I had several ideas in mind, including a dog activity tracker mobile app and a bullet journaling web app (both things I would totally use on a daily basis). However, the mentor I chose for my capstone is also an Amazon Alexa expert, and he encouraged me to give Alexa skill development a try.</p>
+    <p>At first, I was kind of like, "meh," about Alexa development. After all, I didn't own any Alexa devices (at least not at the time — my dad has since given me an Echo Dot. Thanks, Dad!), and I didn't really have any ideas of what to build. But eventually, after researching what Alexa skill development entails and what kinds of skills are already available, I changed my mind and accepted the challenge. After all, this was an opportunity to better hone my JavaScript knowledge and work with Node.js, which had been living on my to-research-at-a-later-time list for months.</p>
+    <p>Reading about Alexa skill development, I learned there are actually a lot of opportunities to put your skill to work for you, which is a bonus. Plus, when I mentioned to a few other developers at a meetup that I was working on Alexa skills, they were all really excited for me and said they wanted to learn Alexa, too. So not only are there tons of resources online, but there's a growing Alexa community as well. Consider me motivated.</p>
+    <h3>Starting with the Alexa fact sample</h3>
+    <p>The first thing my mentor told me to do was to go to <a href="https://github.com/alexa/" rel="noopener" target="_blank">github.com/alexa</a> and look through the various skill samples. As you can see, there are a bunch to choose from: fact, trivia, quiz game, how-to, RSS/Atom feed, decision tree, high-low game, calendar reader, city guide, etc.</p>
+    <p>The first one to stand out to me was <a href="https://github.com/alexa/skill-sample-nodejs-fact" rel="noopener" target="_blank">the fact skill</a>, but not so much for its fact capabilities. Instead, I imagined it as a simple skill to spit out a line, and I knew exactly what I wanted it do: pull from a list of my favorite Kurt Vonnegut quotes. Alexa is pretty smart, so you can say, "Alexa, tell me a quote from Kurt Vonnegut," and she'll read off a quote. This is part of her artificial intelligence. However, there are so many quotes from the late, great Vonnegut, how do you know you're going to get one of the best ones?</p>
+    <p><strong>That's where my skill comes in — by saying, "Alexa, open Kurt Vonnegut Quotes," she'll tell you a quote from my own curated list.</strong> </p>
+    <blockquote class="blockquote">
+      <p class="mb-0">"We are what we pretend to be, so we must be careful about what we pretend to be."</p>
+      <footer class="blockquote-footer">Kurt Vonnegut</footer>
+    </blockquote>
+    <p>The tutorial for the Alexa fact sample was incredibly easy, and I had my skill published in less than a week. Needless to say, this is a great intro to Alexa skill development, and I'm glad it was my first because it really made me feel like a champ. Plus, seeing your name published with an Alexa skill in the Amazon marketplace is super gratifying!</p>
+    <img src="assets/images/portfolio/alexa-skill-store-kurt-vonnegut-quotes-author-karaflaherty.jpg" class="img-fluid" />
+    <p>&#9658; <strong>See Kurt Vonnegut Quotes live on the Amazon marketplace: <a href="https://www.amazon.com/Kara-Flaherty-Kurt-Vonnegut-Quotes/dp/B076VRMNM5" rel="noopener" target="_blank">Alexa Skills: Kurt Vonnegut Quotes</a></strong>
+      <br />&#9658; See the code behind Kurt Vonnegut Quotes: <a href="https://github.com/karakarakaraff/alexa-skills/tree/master/kurt-vonnegut-quotes" rel="noopener" target="_blank">Github</a></p>
+    <h3 class="mt-5">Stuggling with the Alexa trivia sample</h3>
+    <p>After breezing through the fact sample, I figured <a href="https://github.com/alexa/skill-sample-nodejs-trivia" rel="noopener" target="_blank">the trivia sample</a> would be just as simple. <strong>I was wrong.</strong> First of all, the tutorial could use a bit of help, especially when it comes to creating the Lambda function. Second, it doesn't even touch upon a lot of things that will eventually make your skill fail certification tests, like missing intents and card rendering issues. Third, there's a lot more to deal with here — unlike the fact skill, a trivia skill requires a conversation of sorts, including keeping track of user input. I didn't know it at first, but I was in over my head.</p>
+    <p>With the feedback I got from each failed Amazon submission, my mentor's guidance, and a world of resources at my fingertips, I wasn't in over my head for too long, though. And with the fact that my goal was to develop a Stranger Things trivia game after having binged the second season, I was motivated to ship ASAP while the topic was still hot.</p>
+    <center><img src="assets/images/portfolio/stranger_things_logo.png" class="img-fluid" /></center>
+    <h4>Issue #1: Lambda function files</h4>
+    <p>I spent a lot of time editing the sample code in question.js with my own trivia questions, but it seemed impossible to correctly zip my files in such a way that Amazon Web Servces could work with them. My mentor encouraged me to do as much work from the command line as possible rather than using the interface of the Lambda console and developer portals on Amazon. I successfully deployed my skill to the developer portal, but the Lambda function was a no-go. I tried several different approaches based on what I could find online regarding their preferred zip file structures, yet was left with reindeer trivia (the default) on good days, endpoint errors on bad days.</p>
+    <p>Eventually, I fixed this by creating a new Lambda function with the trivia blueprint instead of creating it from scratch. Then, where you can edit the Lambda code, I combined my own question.js with index.js and overwrote the blueprint's code. Reindeer questions might still be living in there somewhere, but at least they're disconnected.</p>
+    <p><strong>Before:</strong></p>
+    <pre><code>
+const questions = require('./question');
+const languageString = {
+  'en': {
+    'translation': {
+      'QUESTIONS': questions['QUESTIONS_EN_US'],
+    },
+  },
+};
+</code></pre>
+    <p><strong>After:</strong></p>
+    <pre><code>
+const languageString = {
+  'en-US': {
+    'translation': {
+      'QUESTIONS': [
+        {
+          'Before getting the title \'Stranger Things,\' what was the series originally going to be called?': [
+            'Montauk',
+            'The Nether',
+            'Time Skip',
+            'The Weirdo on Maple Street',
+          ],
+        },
+
+        /* 49 more questions */
+
+      ],
+    },
+  },
+};
+</code></pre>
+    <h4>Issue #2: Missing intents</h4>
+    <p>Following the tutorial, I created a GetAnswerIntent and DontKnowIntent, named exactly as instructed. However, when I tried to test my skill by saying my trivia answer, Alexa had no idea what I was trying to do. I fiddled with a ton of things and tried to find people online with the same issue, but for the life of me, I could not figure it out.</p>
+    <p>Finally, I scheduled an extra session with my mentor, Mark. Being that he is an Alexa expert, this was his time to shine, and he definitely did! At first, he was just as stumped as I was, but he had me read through the JSON outputs and compare them to what was happening in my Lambda code. In the 10 minutes I spent with him debugging this issue, I learned what would have taken hours to learn on my own. What we discovered is that the Amazon tutorial's sample Lambda code has an AnswerIntent, NOT a GetAnswerIntent, and the mismatch resulted in a miscommunication. Ugh! It was as simple as updating the Lambda code with GetAnswerIntent.</p>
+    <p>Through this, we also discovered that the tutorial was also missing a much-needed YesIntent and NoIntent. Later, after seeing how to test for these intents and add them, I was able to fix yet another bug by adding the StartOverIntent. All of these are built-in intents that are required for a trivia skill to work but are completely ignored by the tutorial, which is too bad for anyone depending on the tutorial alone, but it's a great learning experience for truly understanding how the intents connect between the interaction model and the Lambda function.</p>
+    <h4>Issue #3: Visible SSML tags</h4>
+    <p>SSML, short for speech synthesis markup language, is integral to helping Alexa sounds less like a robot and more like a human. It's also required for pronouncing words like "demogorgon" correctly and not saying "Avenue club" in place of "AV club."</p>
+    <p><a href="https://developer.amazon.com/docs/custom-skills/speech-synthesis-markup-language-ssml-reference.html" rel="noopener" target="_blank">Amazon has a fantastic resource for this</a>, which I was excited to use in my skill. However, to my dismay, including SSML tags in my skill meant that they were both spoken by Alexa (great!) and written on the home cards (not so great).</p>
+    <p>A bit of research led me to the idea of stripping the SSML tags out of the cards using regex, and since I have a weird obsession with regex, I was totally down for it. But how? And where? I was stumped yet again.</p>
+    <p>My mentor offered to meet again to go over it, but unfortunately, I was working overtime, so my schedule was all weird, leaving me to figure it out on my own. I decided that maybe learning the basics of Alexa skill development couldn't hurt, so I took the <a href="https://www.codecademy.com/learn/learn-alexa" rel="noopener" target="_blank">Intro to Alexa course on Codecademy</a>. It was super basic and didn't really go into SSML or the home cards, but it did clarify a lot of concepts when it comes to rendering Alexa's output, which proved incredibly helpful.</p>
+    <p>Additionally, I read through the README.md file of the <a href="https://github.com/alexa/alexa-skills-kit-sdk-for-nodejs" rel="noopener" target="_blank">Alexa Skills Kit repo</a> (which I didn't install or use, but that is one hell of an informative README.md if I do say so myself).</p>
+    <p>Combining everything together, I was able to write the correct code in the right place to strip the SSML tags from the home cards, which felt like a huge win! It was as simple as this:</p>
+    <pre><code>
+// First, do a ctrl + F for "card," you'll see it show up twice in the trivia sample's Lambda code.
+// Put this variable before the card gets rendered:
+var regex = /(<([^>]+)>)/ig;
+// Then, where the card gets rendered, add .replace(regex, "") like so:
+this.response.cardRenderer(this.t('GAME_NAME'), repromptText.replace(regex, ""));
+</code></pre>
+    <h4>Issue #4: Missing home cards</h4>
+    <p>Since I was messing around with the SSML in the home cards, I realized I had a problem: only the first question's home card showed up, but the rest were empty. With my new knowledge of understanding Alexa responses and being able to debug issues, I was able to follow the flow of my code through a game and see what each line was doing and why. As I mentioned in the SSML code above, the trivia sample renders cards in two places. The first is in <code>startStateHandlers</code>, and the second is in the handleUserGuess function, which gets called in <code>triviaStateHandlers</code>.</p>
+    <p>The first question is actually attached to the welcome message, which gets rendered in the <code>startStateHandlers</code>, so I knew the code for the home card was ok there. Comparing the card code that gets called for <code>triviaStateHandlers</code>, I could see one small difference. See if you can spot it:</p>
+
+    <p><code>startStateHandlers</code> &rarr; <code>this.response.cardRenderer(this.t('GAME_NAME'), repromptText.replace(regex, ""));</code><br />
+      <code>triviaStateHandlers</code> &rarr; <code>this.response.cardRenderer(this.t('GAME_NAME', repromptText.replace(regex, "")));</code></p>
+    <p>One parenthesis. That's all it takes. By closing the 'GAME_NAME' parentheses to separate 'GAME_NAME' and repromptText, and of course removing a parenthsis from the end of the line, the home cards rendered correctly. This is an error in the sample code that needs to be fixed, otherwise your skill will not pass certification.</p>
+    <h4>It's finally alive!</h4>
+    <p>Hours after writing this post, my skill passed certification! Take a look at this beauty.</p>
+    <img src="assets/images/portfolio/alexa-skill-store-stranger-things-trivia.png" class="img-fluid" />
+    <p>&#9658; <strong>See Stranger Things Trivia live on the Amazon marketplace: <a href="https://www.amazon.com/dp/B077BGK6M6" rel="noopener" target="_blank">Alexa Skills: Stranger Things Trivia</a></strong>
+      <br />&#9658; See the code behind Stranger Things Trivia: <a href="https://github.com/karakarakaraff/alexa-skills/tree/master/stranger-things-trivia" rel="noopener" target="_blank">Github</a></p>
+    <h3>Update</h3>
+    <p>Since cloning the Alexa trivia sample, someone else already fixed the GetAnswerIntent/AnswerIntent issue between the interaction model and the Lambda function. However, the tutorial instructions were still not updated, and the other issues I ran into with missing intents and home card rendering errors remained. For the first time ever, I decided to fork the alexa/skill-sample-nodejs-trivia repository, fix the errors, and push my changes. Yes, this project led me to my first open-source collaboration! Whether or not they accept my changes is still to be determined, but you can see my pull request here: <a href="https://github.com/alexa/skill-sample-nodejs-trivia/pull/41" rel="noopener" target="_blank">karakarakaraff:updates-to-pass-certification</a></p>
+    <h3>Updated #2</h3>
+    <p>Two months after going live, Stranger Things Trivia hit 10,000 unique customers! It also had a hugely successful December! I credit this with the Echo Dot being one of the top Black Friday sellers, and as a result, a bunch of people received Echo Dots for Christmas. I'm curious if the spike in activity seen for my skill translates across most skills, or if that's just really, really good luck for me. Regardless, that kind of activity was enough to earn a free Echo Dot for myself and a $300 check from Amazon! Those kinds of developer perks will definitely keep me interested in continuing to create Alexa skills as I come up with more ideas.</p>
+    <img src="assets/images/portfolio/stranger-things-metrics.jpg" class="img-fluid" />
+    <hr />
+    <p><strong>Alexa Skills:</strong> <a href="https://github.com/karakarakaraff/alexa-skills" target="_blank" rel="noopener noreferrer">GitHub</a></p>
+    <p><strong>Date:</strong> November 2017</p>
+    <p><strong>Project Checklist:</strong> JavaScript, Node.js, SSML, regex, AWS Lambda, ASK-CLI, ASK developer portal</p>
+    <p><small>Built for <a href="https://www.bloc.io">Bloc.io</a></small></p>
+  </section>
+  <div class="black-strip container-fluid">
+    <section id="footer" class="container">
+      <!-- footer goes here via main.js -->
+    </section>
+  </div>
+  <script src="assets/scripts/jquery-3.3.1.min.js"></script>
+  <script src="assets/scripts/popper.min.js"></script>
+  <script src="assets/scripts/bootstrap.min.js"></script>
+  <script src="assets/scripts/main.js"></script>
+</body>
+
+</html>

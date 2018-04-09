@@ -1,3 +1,5 @@
+/* PAGE INTRO */
+/*------------*/
 .page-intro {
   text-align: center;
   margin-bottom: 30px;
@@ -20,6 +22,12 @@
 .page-intro h6 a {
   color: #999;
   text-decoration: none;
+}
+
+/* CARDS */
+/*-------*/
+.card {
+  margin-bottom: 15px;
 }
 
 .card, .card-img-top {
@@ -52,20 +60,47 @@
   padding-top: 10px;
 }
 
+/* EMBEDDED VIDEO */
+/*----------------*/
 .embed-responsive {
   margin-top: 25px;
   margin-bottom: 25px;
 }
 
+/* BLOCK QUOTE */
+/*-------------*/
 .blockquote {
   margin-top: 25px;
   margin-bottom: 25px;
+  padding-left: 25px;
+  border-left: 3px solid #999;
 }
 
-img.image-in-text {
+/* CODE BLOCKS */
+/*-------------*/
+pre {
+  margin-bottom: 20px;
+  padding: 0 20px 20px 20px;
+  background-color: #eee;
+}
+
+code {
+  color: #000;
+  background-color: #eee;
+}
+
+/* IMAGES */
+/*--------*/
+.image-in-text {
   padding-left: 20px;
 }
 
+.figure-caption {
+  font-style: italic;
+}
+
+/* TABS */
+/*------*/
 .nav-tabs {
   font-weight: 400;
   text-transform: uppercase;
@@ -80,6 +115,7 @@ img.image-in-text {
   padding: 16px;
   color: #999;
   border: 0;
+  text-decoration: none;
 }
 
 .nav-tabs .nav-link:hover {
@@ -95,16 +131,9 @@ img.image-in-text {
   border-bottom: 3px solid #000;
 }
 
-.figure-caption {
-  font-style: italic;
-}
-
-@media (max-width: 1199.98px) {
-  .card {
-    margin-top: 15px;
-  }
-}
-
+/* MEDIA QUERIES */
+/*---------------*/
+/* Phones in portrait or landscape mode */
 @media (max-width: 767.98px) {
   img.image-in-text {
     width: 100%;
