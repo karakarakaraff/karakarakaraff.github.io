@@ -1,9 +1,5 @@
 /* GLOBAL STYLES */
 /*---------------*/
-.black-strip {
-  background-color: #000;
-}
-
 body {
   font-family: 'Roboto', sans-serif;
   font-weight: 300;
@@ -37,6 +33,10 @@ a {
 a:hover {
   color: #95d6d8;
   text-decoration: none;
+}
+
+.black-strip {
+  background-color: #000;
 }
 
 /* TOP NAVIGATION BAR */
@@ -125,7 +125,7 @@ a:hover {
 /*----------------------*/
 #page-content {
   margin-top: 30px;
-  margin-bottom: 60px
+  margin-bottom: 60px;
 }
 
 /* FOOTER */
@@ -182,6 +182,15 @@ a:hover {
   }
   #branding {
     margin-bottom: 0;
+  }
+  h1 {
+    font-size: 36px !important;
+  }
+  h2 {
+    font-size: 30px !important;
+  }
+  h3 {
+    font-size: 26px !important;
   }
 }
 
