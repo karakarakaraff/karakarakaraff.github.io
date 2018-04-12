@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title></title>
+  <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400">
+  <link rel="stylesheet" type="text/css" href="assets/styles/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="assets/styles/main.css">
+  <link rel="stylesheet" type="text/css" href="assets/styles/components.css">
+  <script defer src="assets/scripts/fontawesome-all.min.js"></script>
+</head>
+
+<body>
+  <header>
+    <div class="black-strip container-fluid">
+      <nav id="top-nav" class="nav container"></nav>
+    </div>
+    <section id="branding" class="container">
+      <div class="row align-items-center">
+        <div id="logo" class="col"></div>
+        <div id="social-media" class="col-md-auto"></div>
+      </div>
+    </section>
+    <nav id="main-nav" class="nav justify-content-center container"></nav>
+  </header>
+  <section id="page-content" class="container">
+    <div class="page-intro">
+      <h6><a href="portfolio.html#development">Portfolio: Development</a></h6>
+      <h1 id="page-title">Bloccit: A forum web app with topics, votes and favorites</h1>
+    </div>
+    <img src="assets/images/portfolio/bloccit-home.jpg" class="img-fluid" />
+    <p>After focusing on front-end web development with projects including <a href="bloc-jams-streaming-music-website-and-web-app">Bloc Jams</a> and <a href="bloc-chat-real-time-chat-app-using-angular-and-firebase">Bloc Chat</a>, it was time to transfer over to back-end web development. And thus began my love affair with Ruby! After spending so much time with JavaScript, it was kind of difficult to make the change to Ruby — but only kind of, and not for long. First of all, programmers aren't joking when they say Ruby was written to be programmer-friendly. Basically, instead of having to accommodate JavaScript's dependence on semicolons, parentheses, brackets and other complicated syntax markers, you can essentially write English with Ruby. (Obviously, there's much more to it than that, but as a beginner, that was the aspect of Ruby that originally excited me.)</p>
+    <p>As a 50% left brain / 50% right brain person, I love that there's both an art and a logic to coding, and working with Ruby really brought that home for me. What's more, I had a suspicion that I'd love working with data (like, I'm slightly obsessed with looking at web analytics, and I actually enjoy tracking my budget and financial goals), and learning how to build a database, seed it with data, then use the Ruby console from the command line to access and manipulate that data made me literally ask out loud, "Ruby, where have you been all my life?!"</p>
+    <p>As you'll see with this project, Bloccit is meant to be similar to the popular forum website <a href="https://www.reddit.com/" target="_blank" rel="noopener noreferrer">Reddit</a>. Just like with Reddit, users make an account, write posts under topics, comment on posts, vote posts up or down to give each post a number that tracks its reputation, and mark posts as favorites to receive notifications of new comments on those posts. In addition to standard users, there are also administrators who can be sure to keep everything in line with the ability to edit and delete anything that might not be welcome on the site.</p>
+    <h3>Going above and beyond the curriculum</h3>
+    <p>Since this was the first project of Bloc's back-end curriculum, a lot of it was mostly spelled out. For example, for each checkpoint, Bloc would walk me through how to implement a feature, but then at the end of that checkpoint, I'd be given an assignment to complete on my own. Sometimes it was simply implementing the feature again but in a different way, and sometimes it would be refactoring or customizing the feature.</p>
+    <p>I found that as I got toward the end of the project, I had a lot of ideas for features I wanted to implement that weren't included in the curriculum at all, and I simply was not satisfied without them. The largest of these features is what's on the front page of Bloccit, which is a collection of recent activity on the site in the form of hot topics, popular posts and recent comments:</p>
+    <img class="img-fluid" src="assets/images/portfolio/bloccit-home-lists.jpg" />
+    <p>This required a few different steps:</p>
+    <strong>1. Tracking how many posts belonged to each topic and how many comments belonged to each post</strong>
+    <p>Because my database was already set up with the belongs to/has many active record associations between posts/topics and comments/posts, I knew there was a way I could query the database to create these lists. However, as I searched Google and read through Stack Overflow solutions, I kept seeing counter columns being discussed. Essentially, instead of relying on the active record associations for these lists, I could simply create a column in the topics table that would hold the number of posts belonging to each topic, and again in the posts table to hold the number of comments.</p>
+    <p>I liked this idea a lot, but I was a bit nervous about going outside the curriculum to make changes to my database. The thought of thoroughly messing it up and destroying all of my hard work was holding me back, but then I just had to remind myself: this is what version control is for. (Seriously, thank the universe for version control!).</p>
+    <p>In <a href="https://github.com/karakarakaraff/bloccit/tree/master/db/migrate" target="_blank" rel="noopener noreferrer">db/migrate</a>:</p>
+    <pre><code>
+class AddPostsCount &lt; ActiveRecord::Migration[5.1]
+  def change
+    add_column :topics, :posts_count, :integer, :null =&gt; false, default: 0
+  end
+end
+    </code></pre>
+    <pre><code>
+class AddCommentsCount &lt; ActiveRecord::Migration[5.1]
+  def change
+    add_column :posts, :comments_count, :integer, :null =&gt; false, default: 0
+  end
+end
+    </code></pre>
+    <strong>2. Writing a custom scope to order topics and posts by rank</strong>
+    <p>Now that I had my counters set up, I could write a simple custom scope to rank the topics and posts from the highest number in the counter column to the lowest. That means whatever topic had the most posts would be at the top of my list, and the post with most comments would be at the top. <em>Note: I decided to order popular posts by number of comments rather than overall votes because I thought, what if there's a post that people really hate and downvote, but that post has all the action because everyone is commenting on it?</em></p>
+    <p>In <a href="https://github.com/karakarakaraff/bloccit/blob/master/app/controllers/welcome_controller.rb" target="_blank" rel="noopener noreferrer">app/controllers/welcome_controller.rb</a>:</p>
+    <pre><code>
+def index
+  @popular_topics = Topic.reorder('posts_count DESC').limit(4)
+  @top_posts = Post.reorder('comments_count DESC').limit(3)
+  @recent_comments = Comment.order('created_at DESC').limit(2)
+end
+    </code></pre>
+    <p>With the code above, you can see that popular_topics (aka "hot topics") and top_posts (aka "popular posts") use the counters in descending order. However, recent_comments (aka "recent comments" — simple enough!) are ordered by the time they're created, which is an automatic feature of rails, so I really didn't have to do anything special there.</p>
+    <p>The other thing to note about the code above is the "limit()" number. Four topics, three posts, two comments — it's exactly what you see on the front page.</p>
+    <strong>3. Writing partials to display each list</strong>
+    <p>I learned through my mentor that, instead of having all of my display code in one long document, it's much better to break it up into pieces. For Ruby, that means using partial templates to break down the code into manageable chunks, then rendering the partials individually.</p>
+    <p>In <a href="https://github.com/karakarakaraff/bloccit/blob/master/app/views/topics/_popular_topics.html.erb" target="_blank" rel="noopener noreferrer">app/views/topics/_popular_topics.html.erb</a>:</p>
+    <pre><code>
+&lt;% @popular_topics.each do |topic| %&gt;
+  &lt;div class="media"&gt;
+    &lt;div class="media-body"&gt;
+      &lt;h4 class="media-heading"&gt;
+        &lt;%= link_to topic.name, topic %&gt;
+      &lt;/h4&gt;
+      &lt;small&gt;
+        &lt;%= topic.posts.count %&gt; posts
+      &lt;/small&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;% end %&gt;
+    </code></pre>
+    <p>In <a href="https://github.com/karakarakaraff/bloccit/blob/master/app/views/posts/_top_posts.html.erb" target="_blank" rel="noopener noreferrer">app/views/posts/_top_posts.html.erb</a>:</p>
+    <pre><code>
+&lt;% @top_posts.each do |post| %&gt;
+  &lt;div class="media"&gt;
+    &lt;div class="gravatar"&gt;
+      &lt;%= image_tag post.user.avatar_url(42) %&gt;
+    &lt;/div&gt;
+    &lt;div class="media-body"&gt;
+      &lt;h4 class="media-heading"&gt;
+        &lt;%= link_to post.title, topic_post_path(post.topic, post) %&gt;
+      &lt;/h4&gt;
+      &lt;small&gt;
+        &lt;%= pluralize(post.points, 'point') %&gt; | &lt;%= pluralize(post.comments_count, 'comment') %&gt; | &lt;%= link_to post.topic.name, post.topic %&gt;
+      &lt;/small&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;% end %&gt;
+    </code></pre>
+    <p>In <a href="https://github.com/karakarakaraff/bloccit/blob/master/app/views/comments/_recent_comments.html.erb" target="_blank" rel="noopener noreferrer">app/views/comments/_recent_comments.html.erb</a>:</p>
+    <pre><code>
+&lt;% @recent_comments.each do |comment| %&gt;
+  &lt;div class="media"&gt;
+    &lt;div class="gravatar"&gt;
+      &lt;%= image_tag comment.user.avatar_url(42) %&gt;
+    &lt;/div&gt;
+    &lt;div class="media-body"&gt;
+      &lt;small&gt;
+        &lt;%= link_to comment.user.name, user_path(comment.user) %&gt;
+        on &lt;%= link_to comment.post.title, topic_post_url(comment.post.topic, comment.post) %&gt;
+      &lt;/small&gt;&lt;br&gt;
+      &lt;%= comment.body %&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;% end %&gt;
+    </code></pre>
+    <p>And finally, on the homepage, in <a href="https://github.com/karakarakaraff/bloccit/blob/master/app/views/welcome/index.html.erb" target="_blank" rel="noopener noreferrer">app/views/welcome/index.html.erb</a>:</p>
+    <pre><code>
+&lt;div class="row"&gt;
+  &lt;div class="col-md-4"&gt;
+    &lt;h2&gt;Hot Topics&lt;/h2&gt;
+    &lt;%= render "topics/popular_topics" %&gt;
+  &lt;/div&gt;
+  &lt;div class="col-md-4"&gt;
+    &lt;h2&gt;Popular Posts&lt;/h2&gt;
+    &lt;%= render "posts/top_posts" %&gt;
+  &lt;/div&gt;
+  &lt;div class="col-md-4"&gt;
+    &lt;h2&gt;Recent Comments&lt;/h2&gt;
+    &lt;%= render "comments/recent_comments" %&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+    </code></pre>
+    <h3>Testing it all out</h3>
+    <p>The best part of this whole project was the testing. Since I've been a self-taught developer for years, it's an old habit to throw code at a wall and see what sticks. Write a little bit here, refresh the page to see what happened. Write a little more over here, refresh the page again. And over and over and over ... you get the idea. But with Ruby on Rails, I learned all about test-driven development and why it's so much more efficient to think about what you need your application to do, write the tests that would ensure the application does just that, then finally write just the code you need to make those tests pass. No need for a bloated, heavy web app that leaves you wondering if it's actually going to work — with test-driven development, it's guaranteed to work.</p>
+    <p>Writing spec tests and running them from the command line was interesting enough, but what really made it fun was adding the <a href="https://github.com/mattsears/nyan-cat-formatter" target="_blank" rel="noopener noreferrer">Nyan Cat Formatter</a>. If you have to run a bunch of tests multiple times, why not include a little Nyan magic, right?</p>
+    <img class="img-fluid mx-auto d-block" src="assets/images/portfolio/nyan_cat_formatter.gif" />
+    <p>Finally, the best part about testing the whole thing out was asking my friends to use Bloccit. Not only did it give me real-world data in my database, but it gave me the opportunity to get feedback on things that you can't test with specs, like the user experience and additional features they'd like to see. No doubt in the world, I have some of the best friends — they were just as excited about Bloccit as I was.</p>
+    <hr />
+    <p><strong>Bloccit:</strong> <a href="https://github.com/karakarakaraff/bloccit" target="_blank" rel="noopener noreferrer">GitHub</a> / <a href="https://bloccit-karakarakaraff.herokuapp.com/" target="_blank" rel="noopener noreferrer">Live site</a></p>
+    <p><strong>Date:</strong> July-August 2017</p>
+    <p><strong>Project Checklist:</strong> Ruby, Rails, HTML5, CSS3, Bootstrap, PostgreSQL</p>
+    <p><small>Built for <a href="https://www.bloc.io">Bloc.io</a></small></p>
+  </section>
+  <div class="black-strip container-fluid">
+    <section id="footer" class="container"></section>
+  </div>
+  <script src="assets/scripts/jquery-3.3.1.min.js"></script>
+  <script src="assets/scripts/popper.min.js"></script>
+  <script src="assets/scripts/bootstrap.min.js"></script>
+  <script src="assets/scripts/main.js"></script>
+</body>
+
+</html>

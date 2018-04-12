@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title></title>
+  <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400">
+  <link rel="stylesheet" type="text/css" href="assets/styles/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="assets/styles/main.css">
+  <link rel="stylesheet" type="text/css" href="assets/styles/components.css">
+  <script defer src="assets/scripts/fontawesome-all.min.js"></script>
+</head>
+
+<body>
+  <header>
+    <div class="black-strip container-fluid">
+      <nav id="top-nav" class="nav container"></nav>
+    </div>
+    <section id="branding" class="container">
+      <div class="row align-items-center">
+        <div id="logo" class="col"></div>
+        <div id="social-media" class="col-md-auto"></div>
+      </div>
+    </section>
+    <nav id="main-nav" class="nav justify-content-center container"></nav>
+  </header>
+  <section id="page-content" class="container">
+    <div class="page-intro">
+      <h6><a href="portfolio.html#development">Portfolio: Development</a></h6>
+      <h1 id="page-title">Bloc Chat: Real-time chat app using AngularJS and Firebase</h1>
+    </div>
+    <img src="assets/images/portfolio/bloc-chat-home.jpg" class="img-fluid" />
+    <p>After <a href="bloc-jams-streaming-music-website-and-web-app">Bloc Jams</a>, Bloc Chat was my next project. The inspiration for Bloc Chat was based loosely on the popular chat application <a href="https://slack.com/" target="_blank" rel="noopener noreferrer">Slack</a>, which I use personally and professionally and absolutely love. However, the goal of Bloc Chat was not so much creating something as amazing as Slack, but it was rather focused on building something that 1) functions as a basic chat web app, and 2) integrates a database for real-time messaging. To make it all work, I built Bloc Chat with the AngularJS framework and connected it to Firebase.</p>
+    <h3>On my own (with a little help)</h3>
+    <p>The most important thing to know about Bloc Chat is that, unlike Bloc Jams, where I was given lots of instructions and explanations by the Bloc curriculum, the Bloc Chat project was essentially, "Here's what should happen. Figure it out." Of course, I did have my mentor and other Bloc students to connect with if I ever got stuck, but I believe Bloc took this approach for a few reasons:</p>
+    <ul>
+ 	  <li>To challenge me to apply everything I've learned so far and discover new things to learn</li>
+ 	  <li>To force me to debug and find my own solutions (thanks, Stack Overflow!)</li>
+ 	  <li>To introduce me to documentation, sometimes terribly written, difficult-to-understand documentation</li>
+    </ul>
+    <p>I won't lie, I definitely got stuck on more than one occasion, sometimes for days at a time. When I couldn't code, I was thinking about coding, trying to think of ways to get myself unstuck. Google and the aforementioned documentation became my best friends, and for once, I felt like I was using crossover skills like proper research, reading between the lines, reading ALL THE LINES, understanding what applies and what doesn't — skills that come directly from my journalism background. Even though I was frustrated at hitting a wall in the building of my project, I actually got a rush from using these skills. Yes, it's true, <a href="why-im-taking-a-deep-dive-into-web-development">I get pumped on research.</a></p>
+    <p>You know what got me unstuck the most often? Walking my dog. No joke, I apparently do my best thinking while walking my dog. And yes, because I love research, I looked up why this might be, and that's when I came across this article: <a href="https://www.theguardian.com/education/2016/jun/18/how-physical-exercise-makes-your-brain-work-better" target="_blank" rel="noopener noreferrer">How physical exercise makes your brain work better (The Guardian)</a>. Needless to say, my dog was quite pleased with all of the extra walks.</p>
+    <h3>The requirements and the result</h3>
+    <p>I was given a series of user stories and wireframes for this project. You can see them below:</p>
+    <h4>User Stories</h4>
+    <ul>
+      <li>As a user, I want to see a list of <strong>available chat rooms.</strong></li>
+      <li>As a user, I want to <strong>create</strong> chat rooms.</li>
+      <li>As a user, I want to see a <strong>list of messages</strong> in each chat room.</li>
+      <li>As a user, I want to set my <strong>username</strong> to display in chat rooms.</li>
+      <li>As a user, I want to <strong>send messages</strong> associated with my username in a chat room.</li>
+    </ul>
+    <h4>Wireframes</h4>
+    <div class="row">
+      <div class="col-md-6">
+        <img class="img-fluid mx-auto d-block" src="assets/images/portfolio/bloc-chat-1-room-list.jpg" />
+        <p class="text-center mb-5">list of chat rooms</p>
+      </div>
+      <div class="col-md-6">
+        <img class="img-fluid mx-auto d-block" src="assets/images/portfolio/bloc-chat-2-new-room-button.jpg" />
+        <p class="text-center mb-5">new chat room button</p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-6">
+        <img class="img-fluid mx-auto d-block" src="assets/images/portfolio/bloc-chat-3-new-room-modal.jpg" />
+        <p class="text-center mb-5">new chat room modal</p>
+      </div>
+      <div class="col-md-6">
+        <img class="img-fluid mx-auto d-block" src="assets/images/portfolio/bloc-chat-4-messages.jpg" />
+        <p class="text-center mb-5">chat room with messages</p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-6">
+        <img class="img-fluid mx-auto d-block" src="assets/images/portfolio/bloc-chat-5-username-modal.jpg" />
+        <p class="text-center mb-5">set username modal</p>
+      </div>
+      <div class="col-md-6">
+        <img class="img-fluid mx-auto d-block" src="assets/images/portfolio/bloc-chat-6-send-message.jpg" />
+        <p class="text-center mb-5">chat room with the ability to send a new message</p>
+      </div>
+    </div>
+    <p>The wireframes were not the be-all-end-all of Bloc Chat's design. I wanted to do my best to implement the design down to the pixel (I even pulled the wireframes into Photoshop to measure every element and get exact RBG color codes). But as the project went on, I added a lot of my own touches to improve the design and make it as user-friendly as possible. If you take a look at <a href="https://blocchat-karakarakaraff.herokuapp.com/" target="_blank" rel="noopener noreferrer">my live deployment of Bloc Chat</a>, you can see how similar it is to the given wireframes.</p>
+    <h3>The Firebase database</h3>
+    <p>For me, the most challenging part of Bloc Chat was working with the Firebase database. I had a little bit of experience with databases due to my Wordpress experience, so I wasn't completely lost, but this was my first time creating a database from scratch, manually connecting it to a web app, and then writing the code that automatically sends information to the database and displays that information in the browser. I didn't know it at the time, but I was building a <strong>relational database structure</strong> (mind you, a very, very simple version). Essentially, the database holds two object types, and they are related like this:</p>
+    <pre><code>
+    bloc-chat
+|---&gt; rooms
+|    |---&gt; -KjM2Ktq-eXy4wCnGP: "spadoinkle"
+|---&gt; messages
+|    |---&gt; -KjtyDv82UyqJGkvcO
+|        |---&gt; content: "this is a message in the spadoinkle chat room"
+|        |---&gt; roomId: "-KjM2Ktq-eXy4wCnGP"
+|        |---&gt; sentAt: "time date"
+|        |---&gt; username: "testing123"
+    </code></pre>
+    <p>As you can see, there's an overarching bloc-chat object, and it holds the rooms and the messages. Each room is identified by a unique key (in this case, that's the -KjM2Ktq-eXy4wCnGP). Each message is also identified by a unique key of its own, but stored under that key is the roomId key, which holds as its value the key to the room which the messages belongs. Pretty fascinating, right?</p>
+    <p>Being a beginner, I had expected the messages to actually fall under the rooms where they belonged rather than be separated and only connected by a number. However, after seeing it in action, and after reading through all of the <a href="https://firebase.google.com/docs/database/web/structure-data" target="_blank" rel="noopener noreferrer">Firebase documentation on best practices to structure data</a>, it makes perfect sense now. Had I followed through on what I originally expected to happen, I would have committed the first data structure error listed in the documentation, resulting in the browser having to download waaaaaaay more information than is necessary upon simply opening Bloc Chat, which would make for a rather slow and bandwidth-expensive experience.</p>
+    <h3>What's next?</h3>
+    <p>I had so much fun with Bloc Chat, I wanted to dedicate a lot more time to improving it, like setting it up to hold actual user accounts and making the chat rooms automatically scroll down as new messages are added, but alas, I had to continue on to the next phase of my learning, which was studying Ruby on Rails and building a Reddit-inspired forum called <a href="bloccit-a-forum-web-app-with-topics-votes-and-favorites">Bloccit</a>. However, I do plan to come back to Bloc Chat someday in the future to implement my ideas and do a bit more experimentation with Firebase.</p>
+    <hr />
+    <p><strong>Bloc Chat:</strong> <a href="https://github.com/karakarakaraff/bloc-chat" target="_blank" rel="noopener noreferrer">GitHub</a> / <a href="https://blocchat-karakarakaraff.herokuapp.com/" target="_blank" rel="noopener noreferrer">Live site</a></p>
+    <p><strong>Date:</strong> April-May 2017</p>
+    <p><strong>Project Checklist:</strong> JavaScript, HTML5, CSS3, Bootstrap, AngularJS, Firebase</p>
+    <p><small>Built for <a href="https://www.bloc.io">Bloc.io</a></small></p>
+  </section>
+  <div class="black-strip container-fluid">
+    <section id="footer" class="container"></section>
+  </div>
+  <script src="assets/scripts/jquery-3.3.1.min.js"></script>
+  <script src="assets/scripts/popper.min.js"></script>
+  <script src="assets/scripts/bootstrap.min.js"></script>
+  <script src="assets/scripts/main.js"></script>
+</body>
+
+</html>
