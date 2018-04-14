@@ -25,7 +25,7 @@ const github = {
 
 // MAIN NAVIGATION BAR
 const mainNavLinks = [
-  ['Home', 'index.html'],
+  ['Home', 'https://www.karaflaherty.com'],
   ['Portfolio', 'portfolio.html'],
   ['Blog', 'blog.html'],
   ['Korea', 'korea.html']
@@ -54,7 +54,7 @@ window.onload = function() {
   }
 
   const logo = document.getElementById('logo');
-  logo.innerHTML = `<a href="index.html"><img class="img-fluid" src="${logoImg}" alt="${copyright.name}"/></a>`;
+  logo.innerHTML = `<a href="https://www.karaflaherty.com"><img class="img-fluid" src="${logoImg}" alt="${copyright.name}"/></a>`;
 
   const socialMedia = document.getElementById('social-media');
   socialMedia.innerHTML = `<a href="${linkedin.link}"><i class="${linkedin.icon} fa-3x" data-fa-transform="shrink-6"></i></a><a href="${twitter.link}"><i class="${twitter.icon} fa-3x" data-fa-transform="shrink-6"></i></a><a href="${github.link}"><i class="${github.icon} fa-3x" data-fa-transform="shrink-6"></i></a>`;
