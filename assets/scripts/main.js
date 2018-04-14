@@ -50,7 +50,7 @@ window.onload = function() {
   const topNav = document.getElementById('top-nav');
   topNav.innerHTML = '';
   for (let link of topNavLinks) {
-    topNav.innerHTML += `<a class="nav-link" href="${link[1]}">${link[0]}</a>`;
+    topNav.innerHTML += `<a class="nav-link" target="_blank" href="${link[1]}">${link[0]}</a>`;
   }
 
   const logo = document.getElementById('logo');
