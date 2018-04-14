@@ -1,3 +1,16 @@
+/* SIDEBAR */
+/*---------*/
+#sidebar {
+  border: 2px solid #000;
+  padding: 20px;
+}
+
+.sidebar-title {
+  text-align: center;
+  color: #999;
+  font-weight: 300;
+}
+
 /* PAGE INTRO */
 /*------------*/
 .page-intro {
@@ -198,6 +211,9 @@ li {
   h4.slide-headline {
     font-size: 1rem;
   }
+  #sidebar {
+    margin-top: 25px;
+  }
 }
 
 @media (min-width: 768px) and (max-width: 991.98px) {
@@ -206,7 +222,7 @@ li {
   }
 }
 
-@media (min-width: 992px) and (max-width: 1199.98px) { 
+@media (min-width: 992px) and (max-width: 1199.98px) {
   .carousel-caption {
     padding-top: 22.5%;
   }
