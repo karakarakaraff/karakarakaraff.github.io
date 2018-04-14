@@ -35,6 +35,12 @@ a:hover {
   text-decoration: none;
 }
 
+#error {
+  font-size: 150px;
+  font-weight: 500;
+  color: #999;
+}
+
 .black-strip {
   background-color: #000;
 }

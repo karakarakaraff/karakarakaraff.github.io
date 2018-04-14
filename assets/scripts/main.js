@@ -3,7 +3,7 @@ const titleText = "Kara Flaherty | Web Developer & Visual Designer";
 
 // TOP NAVIGATION BAR
 const topNavLinks = [
-  ['Download resume', 'https://#']
+  ['Download resume', 'KaraFlaherty-resume.pdf']
 ];
 
 // LOGO
