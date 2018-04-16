@@ -57,7 +57,7 @@ window.onload = function() {
   logo.innerHTML = `<a href="http://www.karaflaherty.com"><img class="img-fluid" src="${logoImg}" alt="${copyright.name}"/></a>`;
 
   const socialMedia = document.getElementById('social-media');
-  socialMedia.innerHTML = `<a href="${linkedin.link}"><i class="${linkedin.icon} fa-3x" data-fa-transform="shrink-6"></i></a><a href="${twitter.link}"><i class="${twitter.icon} fa-3x" data-fa-transform="shrink-6"></i></a><a href="${github.link}"><i class="${github.icon} fa-3x" data-fa-transform="shrink-6"></i></a>`;
+  socialMedia.innerHTML = `<a rel="noopener noreferrer" target="_blank" href="${linkedin.link}"><i class="${linkedin.icon} fa-3x" data-fa-transform="shrink-6"></i></a><a rel="noopener noreferrer" target="_blank" href="${twitter.link}"><i class="${twitter.icon} fa-3x" data-fa-transform="shrink-6"></i></a><a rel="noopener noreferrer" target="_blank" href="${github.link}"><i class="${github.icon} fa-3x" data-fa-transform="shrink-6"></i></a>`;
 
   const mainNav = document.getElementById('main-nav');
   mainNav.innerHTML = '';
