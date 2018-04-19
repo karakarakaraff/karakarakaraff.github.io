@@ -189,6 +189,10 @@ a:hover {
   #branding {
     margin-bottom: 0;
   }
+  #main-nav a:after {
+    content: "";
+    padding-left: 0;
+  }
   h1 {
     font-size: 36px !important;
   }
