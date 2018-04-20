@@ -127,16 +127,16 @@ a:hover {
   content: "";
 }
 
-/* PAGE CONTENT SECTION */
-/*----------------------*/
-#page-content {
+/* MAIN */
+/*------*/
+main {
   margin-top: 30px;
   margin-bottom: 60px;
 }
 
 /* FOOTER */
 /*--------*/
-#footer {
+footer {
   color: #999;
   text-transform: uppercase;
   font-size: 12px;

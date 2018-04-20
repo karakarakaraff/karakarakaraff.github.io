@@ -56,16 +56,16 @@
       </div>
     </nav>
   </header>
-  <section id="page-content" class="container">
+  <main role="main" class="container">
     <div class="page-intro">
       <h6><a href="portfolio.html#development">Portfolio: Development</a></h6>
       <h1 id="page-title">Bloc Jams: Streaming music website and web app</h1>
     </div>
-    <img src="assets/images/portfolio/bloc-jams-home.jpg" class="img-fluid w-100" />
+    <img src="assets/images/portfolio/bloc-jams-home.jpg" class="img-fluid w-100" alt="Bloc Jams home" />
     <h3>My first project, my first love</h3>
     <p>When I started my deep dive into coding earlier this year, I started with JavaScript. Day after day, I studied variables, loops, arrays, functions, objects, algorithms, all the good stuff that makes up the foundation of programming. After about a month of studying and putting together little programs and games, I was beyond anxious to build something bigger, something functional and potentially useful.</p>
     <p>That's when I started Bloc Jams. Bloc Jams is the first project for Bloc's web development program, and it was a first for me in a lot of things — not only did I finally get to see how JavaScript works in the browser as opposed to the console, but I was connecting it with actual elements on my website, making things animate and transition, and I was using loops to replace long, redundant code. This was it! I was connecting the dots between my month of studying and the websites I interact with daily, and I was so excited, I could not stop talking about it, even to people who have no idea how websites work. (Oh, my poor husband, haha!)</p>
-    <img class="img-fluid" src="assets/images/portfolio/bloc-jams-album.jpg" />
+    <img class="img-fluid" src="assets/images/portfolio/bloc-jams-album.jpg" alt="Album view" />
     <h3>jQuery — good, bad and ugly</h3>
     <p>I built the entire foundation of Bloc Jams using plain, vanilla JavaScript. Believe it or not, I actually enjoyed spending chunks of time thinking about the exact actions I wanted my site to take, then writing them out step by step in JavaScript. I was so proud of my code, my beautiful, beautiful code, that when Bloc told me to rip it apart and convert everything to jQuery, I was horrified. Happy to take on the challenge, sure, but damn it, this code was my baby! (Looking back now, I think it's actually kind of sweet how attached I was to that code. I was so new, I wanted to hold onto everything.)</p>
     <p>Of course, the jQuery challenge turned out to be incredibly interesting and a great learning experience. I still held a lot of love for my vanilla JavaScript, but seeing jQuery in action made me realize the job could be done much faster and easier. It seemed like magic, but it wasn't all good things, either — more than anything, Bloc stressed that we really look at the pros and cons of jQuery and understand what it means to risk relying on an outside library for your website's functionality. In my research, I learned that there are lots of programmers who think jQuery is a language of its own, and there are even more people who don't know JavaScript well enough to use it without jQuery's assistance.</p>
@@ -77,24 +77,24 @@
     <p>Throughout all of Bloc Jams and Bloc Jams Angular, I was completely out of my comfort zone. But you know what? I loved every minute of it. This is how I knew I had made the right decision, and that a future career in coding would be just as amazing as I had imagined it to be.</p>
     <p>I knew this especially when working with the code that handles playing the songs. As a user, it seems like such a simple concept — you push a button, the song starts. Not a big deal, except that <strong>it is totally a big deal</strong>. There is so much going on under the hood, it forced me to think long and hard about what the mouse is doing, where it's going, and what actions should result from all the of different combinations. Here's what I mean:</p>
     <p>1. When a song is clicked to play it, the song number should change to a pause button:</p>
-    <img class="img-fluid mx-auto d-block" src="assets/images/portfolio/1song_num_to_pause.gif" />
+    <img class="img-fluid mx-auto d-block" src="assets/images/portfolio/1song_num_to_pause.gif" alt="Change to pause button" />
     <p>2. When the mouse leaves the table row of the currently playing song, the pause button should remain:</p>
-    <img class="img-fluid mx-auto d-block" src="assets/images/portfolio/2pause_remain.gif" />
+    <img class="img-fluid mx-auto d-block" src="assets/images/portfolio/2pause_remain.gif" alt="Pause button remains" />
     <p>3. When switching songs, the previously playing song's table cell should revert the content back to the song number:</p>
-    <img class="img-fluid mx-auto d-block" src="assets/images/portfolio/3pause_to_num.gif" />
+    <img class="img-fluid mx-auto d-block" src="assets/images/portfolio/3pause_to_num.gif" alt="Change to song number" />
     <p>4. When hovering over each of the songs that aren't playing, the play button should still appear; however, when hovering over the currently playing song, the play button should not appear:</p>
-    <img class="img-fluid mx-auto d-block" src="assets/images/portfolio/4play_on_hover.gif" />
+    <img class="img-fluid mx-auto d-block" src="assets/images/portfolio/4play_on_hover.gif" alt="Hover over songs" />
     <p>All of those actions required their own code, some longer than others, and that's just one small part of the overall project. I could have made it simpler and not worried about anything other than click = play, but would that have been simpler for the user? Absolutely not! My biggest takeaway from this entire project is that, as a web developer, I am responsible for the beauty, functionality and simplicity that the user interacts with as well as the beauty, functionality and simplicity of the code that the user will never see. It's a big responsibility, especially in today's digital world, but it's a responsibility I take very seriously.</p>
-    <img class="img-fluid" src="assets/images/portfolio/bloc-jams-collection.jpg" />
+    <img class="img-fluid" src="assets/images/portfolio/bloc-jams-collection.jpg" alt="Collection view" />
     <p><strong>Bloc Jams:</strong> <a href="https://github.com/karakarakaraff/bloc-jams">GitHub</a> / <a href="https://karakarakaraff-bloc-jams.netlify.com/">Live site</a></p>
     <p><strong>Bloc Jams Angular:</strong> <a href="https://github.com/karakarakaraff/bloc-jams-angular" target="_blank" rel="noopener noreferrer">GitHub</a> / <a href="https://blocjamsangular-karakarakaraff.herokuapp.com/" target="_blank" rel="noopener noreferrer">Live site</a></p>
     <p><strong>Date:</strong> February-April 2017</p>
     <p><strong>Project Checklist:</strong> JavaScript, jQuery, HTML5, CSS3, Bootstrap, AngularJS, BuzzJS</p>
     <p><small>Built for <a href="https://www.bloc.io">Bloc.io</a></small></p>
-  </section>
-  <div class="black-strip container-fluid">
-    <section id="footer" class="container">&copy;<script type="text/javascript">document.write(new Date().getFullYear());</script> Kara Flaherty</section>
-  </div>
+  </main>
+  <footer class="black-strip container-fluid">
+    <div id="footer-conter" class="container">&copy;<script type="text/javascript">document.write(new Date().getFullYear());</script> Kara Flaherty</div>
+  </footer>
   <script src="assets/scripts/jquery-3.3.1.min.js"></script>
   <script src="assets/scripts/popper.min.js"></script>
   <script src="assets/scripts/bootstrap.min.js"></script>
