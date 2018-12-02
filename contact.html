@@ -13,7 +13,7 @@
     gtag('config', 'UA-25893914-1');
 
   </script>
-  <title>Korea | Kara Flaherty | Web Developer &amp; Visual Designer</title>
+  <title>Kara Flaherty | Web Developer &amp; Visual Designer</title>
   <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <link rel="icon" type="image/png" href="assets/images/favicon-16x16.png" sizes="16x16">
   <link rel="icon" type="image/png" href="assets/images/favicon-32x32.png" sizes="32x32">
@@ -59,40 +59,50 @@
   </header>
   <main role="main" class="container">
     <div class="page-intro">
-      <h1 id="page-title">Korea</h1>
+      <h1 id="page-title">Contact</h1>
+      <h6>Want to connect? Send a message!<br />All form fields are required.</h6>
     </div>
-    <div class="row">
-      <div class="col-12 col-md-12 col-xl-4">
-        <p><strong>From 2014 to 2016, I lived and worked in South Korea through EPIK (English Program In Korea).</strong> Although I'm now living in the U.S. once again, the experience is one I'll keep with me forever because of how uniquely challenging and truly rewarding it was. I've saved a couple blog posts from that time in order to share a snapshot of what life was like for me as an English teacher at two rural schools outside Ulsan.</p>
-        <p class="mb-5">I no longer have my how-to-apply posts because they're surely out of date by now, but if you have any questions about teaching in Korea, I would be more than happy to share my advice. <a href="contact.html">Just send me a message!</a></p>
-      </div>
-      <div class="col-12 col-md-6 col-xl-4">
-        <div class="card mb-5">
-          <a href="that-one-time-a-documentary-film-crew-showed-up-at-my-school.html"><img class="card-img-top" src="assets/images/korea/soho-doc-kara.png" alt="That one time a documentary film crew showed up at my school"/></a>
-          <div class="card-header">
-            <small>Published June 7, 2014</small>
-          </div>
-          <div class="card-body">
-            <h5 class="card-title"><a href="that-one-time-a-documentary-film-crew-showed-up-at-my-school.html">That one time a documentary film crew showed up at my school</a></h5>
-            <p class="card-text">Last month, a documentary film crew came to my school and filmed for three days. I had absolutely no idea why...</p>
-            <a href="that-one-time-a-documentary-film-crew-showed-up-at-my-school.html" class="btn">Read more</a>
-          </div>
+    <form action="https://formspree.io/kara.a.flaherty@gmail.com" method="POST" class="needs-validation" novalidate>
+      <div class="form-group">
+        <label for="name">Name *</label>
+        <input type="text" class="form-control" id="name" name="name" required>
+        <div class="invalid-feedback">
+          Please provide your name.
         </div>
       </div>
-      <div class="col-12 col-md-6 col-xl-4">
-        <div class="card mb-5">
-          <a href="the-tale-of-two-schools-closing-one-door-but-opening-another.html"><img class="card-img-top" src="assets/images/korea/UBS-kkj-soho.png" alt="The tale of two schools: Closing one door but opening another"/></a>
-          <div class="card-header">
-            <small>Published March 12, 2015</small>
-          </div>
-          <div class="card-body">
-            <h5 class="card-title"><a href="the-tale-of-two-schools-closing-one-door-but-opening-another.html">The tale of two schools: Closing one door but opening another</a></h5>
-            <p class="card-text">When I got placed in Ulsan, EPIK assigned me to two schools. They’re seemingly separate, with one located in a small village...</p>
-            <a href="the-tale-of-two-schools-closing-one-door-but-opening-another.html" class="btn">Read more</a>
-          </div>
+      <div class="form-group">
+        <label for="email-address">Email address *</label>
+        <input type="email" class="form-control" id="email-address" name="_replyto" required>
+        <div class="invalid-feedback">
+          Please provide a valid email address.
         </div>
       </div>
-    </div>
+      <div class="form-group">
+        <label for="message">Message *</label>
+        <textarea class="form-control" id="message" name="message" rows="3" required></textarea>
+        <div class="invalid-feedback">
+          Don&rsquo;t forget your message!
+        </div>
+      </div>
+      <button type="submit" class="btn">Submit</button>
+    </form>
+    <script>
+      (function() {
+        'use strict';
+        window.addEventListener('load', function() {
+          var forms = document.getElementsByClassName('needs-validation');
+          var validation = Array.prototype.filter.call(forms, function(form) {
+            form.addEventListener('submit', function(event) {
+              if (form.checkValidity() === false) {
+                event.preventDefault();
+                event.stopPropagation();
+              }
+              form.classList.add('was-validated');
+            }, false);
+          });
+        }, false);
+      })();
+    </script>
   </main>
   <footer class="black-strip container-fluid">
     <div id="footer-conter" class="container">&copy;<script type="text/javascript">document.write(new Date().getFullYear());</script> Kara Flaherty</div>

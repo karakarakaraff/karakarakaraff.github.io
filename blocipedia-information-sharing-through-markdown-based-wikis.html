@@ -53,6 +53,7 @@
         <a class="nav-link" href="portfolio.html">Portfolio</a>
         <a class="nav-link" href="blog.html">Blog</a>
         <a class="nav-link" href="korea.html">Korea</a>
+        <a class="nav-link" href="contact.html">Contact</a>
       </div>
     </nav>
   </header>
@@ -64,9 +65,9 @@
     <img src="assets/images/portfolio/blocipedia.png" class="img-fluid w-100" alt="Blocipedia home" />
     <figure class="figure float-right ml-4 border-left pl-4">
       <img src="assets/images/portfolio/github-activity-8-2017.png" class="figure-img img-fluid" alt="GitHub contribution chart" />
-      <figcaption class="figure-caption">Here are my GitHub<br />contributions for<br />when I worked on<br />this project — a total<br />of 43 commits in<br />just one week!</figcaption>
+      <figcaption class="figure-caption">Here are my GitHub<br />contributions for<br />when I worked on<br />this project &mdash; a total<br />of 43 commits in<br />just one week!</figcaption>
     </figure>
-    <p>You know coding is for you when you can easily spend hours upon hours "in the zone" while forgetting to eat, forgetting to sleep, and generally forgetting that life exists outside of your code. When it came to this project, that was me. In fact, this project was scheduled to take 40 hours, which I was able to finish in 33.5 hours (yes, I time myself on everything — it's a leftover habit from freelancing), and <em>I fit all 33.5 of those hours in one week.</em> That's on top of my full-time job. Yes, I'll admit it, <strong>I was obsessed.</strong></p>
+    <p>You know coding is for you when you can easily spend hours upon hours "in the zone" while forgetting to eat, forgetting to sleep, and generally forgetting that life exists outside of your code. When it came to this project, that was me. In fact, this project was scheduled to take 40 hours, which I was able to finish in 33.5 hours (yes, I time myself on everything &mdash; it's a leftover habit from freelancing), and <em>I fit all 33.5 of those hours in one week.</em> That's on top of my full-time job. Yes, I'll admit it, <strong>I was obsessed.</strong></p>
     <p>Much like the <a href="bloc-chat-real-time-chat-app-using-angular-and-firebase.html">Bloc Chat</a> project in the front-end portion of the curriculum, Blocipedia was the back-end portion's sink-or-swim project. Instead of walking you through the steps, explaining the purpose of chunks of code, or giving you an assignment with an explicit outcome based on a previous lesson, the project's instructions are essentially, "Here are some user stories. Here are some wireframes. Kbyeeeee!" Personally, I enjoy the freedom to build as I please using everything I've learned so far, and since Ruby on Rails is honestly such a pleasure to use, I believe the combination of creativity, experimentation and pure joy is what led to my one-week downfall in personal hygiene and nutrition.</p>
     <p>Without further ado, let's dive in!</p>
     <h3>Project requirements</h3>
@@ -118,7 +119,7 @@
     </ul>
     <h3>Challenges faced, lessons learned</h3>
     <p>This project is what made me feel confident in my grasp of Ruby on Rails. Believe it or not, I didn't face any major challenges or get stumped for too long, and I believe that's because I came into the project with a master plan of how I wanted it to look and work, and then I allowed adjustments to that plan as I went through each user story.</p>
-    <p>The most difficult part of this project was setting up collaborators because it was my first time thinking about my database in a <strong>has many through</strong> context. Until this point, I had been using the <strong>belongs to, has many</strong> relationship for my database — a wiki belongs to a user, and a user has many wikis. Easy enough, right? But collaborators are users that already exist, and each wiki can have several collaborators. Because of this, I had to think less about collaborators (the users themselves on the wiki) and think more about collaborations (the actual connection between users and wikis).</p>
+    <p>The most difficult part of this project was setting up collaborators because it was my first time thinking about my database in a <strong>has many through</strong> context. Until this point, I had been using the <strong>belongs to, has many</strong> relationship for my database &mdash; a wiki belongs to a user, and a user has many wikis. Easy enough, right? But collaborators are users that already exist, and each wiki can have several collaborators. Because of this, I had to think less about collaborators (the users themselves on the wiki) and think more about collaborations (the actual connection between users and wikis).</p>
     <p>So, <a href="http://guides.rubyonrails.org/association_basics.html#the-has-many-through-association" target="_blank" rel="noopener noreferrer">following the Rails guide on active record associations</a>, I created another table in my database called "collaborators" that holds nothing more than the foreign keys to users and wikis. No new object is created, but the relationships between objects (users and wikis specifically) are stored here. So, if a user gets added to a wiki as a collaborator, this table will create a row that holds the ID of the user and the ID of the wiki.</p>
     <p>To make this work succesfully, the models for users, wikis and collaborators had to be set up with the aforementioned <strong>has many through</strong> associations. They look like this:</p>
     <pre><code>
